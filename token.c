@@ -8,9 +8,11 @@
 #include <ctype.h>
 #include "token.h"
 
+//dua vao cach luu tru nay, moi keyword dang luu gia tri kieu: Tukhoa: "while", giatritoken: KW_WHILE
 struct {
   char string[MAX_IDENT_LEN + 1];
   TokenType tokenType;
+	
 } keywords[KEYWORDS_COUNT] = {
   {"PROGRAM", KW_PROGRAM},
   {"CONST", KW_CONST},
@@ -34,6 +36,7 @@ struct {
   {"TO", KW_TO}
 };
 
+//ham so sanh 2 string
 int keywordEq(char *kw, char *string) {
   while ((*kw != '\0') && (*string != '\0')) {
     if (*kw != toupper(*string)) break;
@@ -44,8 +47,10 @@ int keywordEq(char *kw, char *string) {
 
 TokenType checkKeyword(char *string) {
   int i;
+//chay het so luong keyword da cho de xem no la keyword nao
   for (i = 0; i < KEYWORDS_COUNT; i++)
-    if (keywordEq(keywords[i].string, string)) 
+    if (keywordEq(keywords[i].string, string))
+	//tra ve token cua keyword do 
       return keywords[i].tokenType;
   return TK_NONE;
 }

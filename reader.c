@@ -9,6 +9,7 @@
 
 FILE *inputStream;
 int lineNo, colNo;
+//phu trach bao loi, de biet loi se o dong nao, ky tu thu bao nhieu
 int currentChar;
 
 int readChar(void) {
@@ -20,7 +21,7 @@ int readChar(void) {
   }
   return currentChar;
 }
-
+//Mo file
 int openInputStream(char *fileName) {
   inputStream = fopen(fileName, "rt");
   if (inputStream == NULL)
